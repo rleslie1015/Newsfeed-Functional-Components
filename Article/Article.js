@@ -112,3 +112,52 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+function createComponent(title, date, firstPara, secondPara, thirdPara) {
+  //define new elements
+  const articleDiv = document.createElement('div');
+  const heading = document.createElement('h2');
+  const datePara = document.createElement('p');
+  const paragraph1 = document.createElement('p');
+  const paragraph2 = document.createElement('p');
+  const paragraph3 = document.createElement('p');
+  const expand = document.createElement('span');
+
+  //setup structure of elements
+  articleDiv.appendChild(heading);
+  articleDiv.appendChild(datePara);
+  articleDiv.appendChild(paragraph1);
+  articleDiv.appendChild(paragraph2);
+  articleDiv.appendChild(paragraph3);
+  articleDiv.appendChild(expand);
+
+  //set class names
+  articleDiv.classList.add('article');
+  datePara.classList.add('date');
+  expand.classList.add('expandButton');
+  
+  //set text content
+  heading.textContent = title;
+  datePara.textContent = date;
+  paragraph1.textContent = firstPara;
+  paragraph2.textContent = secondPara;
+  paragraph3.textContent = thirdPara;
+  expand.textContent = "expand";
+
+  //Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  expand.addEventListener('click', () => {
+    console.log("Clicked");
+    articleDiv.classList.toggle('article-open');
+  })
+
+
+  return articleDiv;
+}
+window.addEventListener("load", () => {
+  //select the div for the articles to be appended to 
+  wrapper = document.querySelector(".articles");
+  //map over data and 
+  data.map(data => {
+    wrapper.appendChild(createComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+  });
+
+})
