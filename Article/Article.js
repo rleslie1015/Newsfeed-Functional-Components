@@ -145,7 +145,7 @@ function createComponent(title, date, firstPara, secondPara, thirdPara) {
 
   //Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
   expand.addEventListener('click', () => {
-    console.log("Clicked");
+    // console.log("Clicked");
     articleDiv.classList.toggle('article-open');
   })
 
